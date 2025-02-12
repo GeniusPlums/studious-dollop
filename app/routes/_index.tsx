@@ -1,138 +1,270 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useEffect, useState } from 'react';
+import { useScrollTo } from "~/hooks/useScrollTo";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "AUCTO Games" },
+    { name: "description", content: "Your Game, Your Rules" },
   ];
 };
 
 export default function Index() {
+  const scrollTo = useScrollTo();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { id: 'features', label: 'Features' },
+    { id: 'why-us', label: 'Why Us' },
+    { id: 'testimonials', label: 'Testimonials' }
+  ];
+
+  useEffect(() => {
+    // Initialize particle background
+    const initParticles = () => {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+      script.onload = () => {
+        (window as any).particlesJS('particles-js', {
+          particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+          },
+          retina_detect: true
+        });
+      };
+      document.body.appendChild(script);
+    };
+
+    // Initialize 3D cricket ball animation
+    const init3DBall = () => {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      script.onload = () => {
+        // 3D ball animation code will be initialized here
+        const scene = new (window as any).THREE.Scene();
+        const camera = new (window as any).THREE.PerspectiveCamera(75, 200 / 200, 0.1, 1000);
+        const renderer = new (window as any).THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(200, 200);
+        document.getElementById('ball-container')?.appendChild(renderer.domElement);
+
+        const geometry = new (window as any).THREE.SphereGeometry(1, 32, 32);
+        const texture = new (window as any).THREE.TextureLoader().load('/images/cricket-ball-texture.jpg');
+        const material = new (window as any).THREE.MeshPhongMaterial({ map: texture });
+        const ball = new (window as any).THREE.Mesh(geometry, material);
+        scene.add(ball);
+
+        const light = new (window as any).THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        camera.position.z = 3;
+
+        const animate = () => {
+          requestAnimationFrame(animate);
+          ball.rotation.x += 0.01;
+          ball.rotation.y += 0.01;
+          renderer.render(scene, camera);
+        };
+        animate();
+      };
+      document.body.appendChild(script);
+    };
+
+    initParticles();
+    init3DBall();
+
+    // Smooth scroll initialization
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector((this as HTMLAnchorElement).getAttribute('href') || '');
+        target?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-16">
-        <header className="flex flex-col items-center gap-9">
-          <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
-            Welcome to <span className="sr-only">Remix</span>
-          </h1>
-          <div className="h-[144px] w-[434px]">
-            <img
-              src="/logo-light.png"
-              alt="Remix"
-              className="block w-full dark:hidden"
-            />
-            <img
-              src="/logo-dark.png"
-              alt="Remix"
-              className="hidden w-full dark:block"
-            />
-          </div>
-        </header>
-        <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
-          <p className="leading-6 text-gray-700 dark:text-gray-200">
-            What&apos;s next?
-          </p>
-          <ul>
-            {resources.map(({ href, text, icon }) => (
-              <li key={href}>
-                <a
-                  className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
+    <div className="relative min-h-screen">
+      {/* Particle Background */}
+      <div id="particles-js" className="fixed inset-0 z-0"></div>
+
+      {/* Navigation with Glassmorphism */}
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/10">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <div className="text-2xl sm:text-3xl font-bold text-white hover:text-yellow-400 transition-colors duration-300">AUCTO</div>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-6 lg:space-x-8">
+              {navItems.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className="text-white hover:text-yellow-400 transition-colors duration-300 text-sm lg:text-base"
                 >
-                  {icon}
-                  {text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden text-white hover:text-yellow-400 transition-colors duration-300 p-2"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-16 6h16"}
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'} overflow-hidden`}>
+            <div className="py-4 space-y-2">
+              {navItems.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    scrollTo(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full text-left text-white hover:text-yellow-400 transition-colors duration-300 px-4 py-2 text-sm hover:bg-white/10 rounded"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6">
+        <div id="particles-js" className="fixed inset-0 z-0"></div>
+
+        <div className="relative z-10 flex flex-col items-center justify-center h-[calc(100vh-80px)]">
+          <div className="text-center">
+            <div id="ball-container" className="absolute -top-20 sm:-top-32 left-1/2 transform -translate-x-1/2"></div>
+            <h1 className="mb-8 relative">
+              <span className="block text-4xl sm:text-5xl md:text-7xl font-bold text-yellow-400 mb-2 animate-float">
+                YOUR GAME,
+              </span>
+              <span className="block text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-2 animate-float animation-delay-200">
+                YOUR RULES.
+              </span>
+            </h1>
+            <button className="bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-full text-base sm:text-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+              DOWNLOAD NOW!
+            </button>
+          </div>
+        </div>
       </div>
+
+      {/* Features Section */}
+      <div id="features" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        <div className="container mx-auto px-4">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+              <span className="text-blue-600">Experience </span>
+              <span className="text-yellow-500">Fantasy Cricket</span>
+              <span className="text-blue-600"> Like Never Before</span>
+            </h2>
+            <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
+              Join millions of cricket fans and experience the thrill of live IPL auctions
+            </p>
+          </div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {/* Feature Cards */}
+            <div className="group bg-white p-4 sm:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 animate-on-scroll">
+              {/* Feature content */}
+            </div>
+            {/* ... other feature cards ... */}
+          </div>
+        </div>
+      </div>
+
+      {/* Why Us Section */}
+      <div id="why-us" className="relative bg-gradient-to-br from-gray-50 to-blue-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Left Column - Features */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Feature cards */}
+            </div>
+
+            {/* Right Column - App Preview */}
+            <div className="lg:col-span-5">
+              <div className="relative mx-auto w-full max-w-sm">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-yellow-500 rounded-3xl blur-xl opacity-30 transform rotate-6"></div>
+                <img 
+                  src="/images/app-preview.png" 
+                  alt="AuctoGames App Preview" 
+                  className="relative rounded-2xl shadow-2xl border-8 border-white w-full"
+                />
+                <div className="absolute -bottom-8 -right-8 w-16 sm:w-24 h-16 sm:h-24 bg-yellow-400 rounded-full flex items-center justify-center transform rotate-12">
+                  <span className="text-white font-bold text-lg sm:text-xl">4.8★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div id="testimonials" className="bg-white py-16 sm:py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 animate-on-scroll">
+            <span className="text-blue-600">What Our </span>
+            <span className="text-yellow-500">Users Say</span>
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {/* Testimonial cards */}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Section */}
+      <footer className="bg-white pt-12 sm:pt-16 pb-6 sm:pb-8">
+        <div className="container mx-auto px-4">
+          {/* Footer content */}
+        </div>
+      </footer>
     </div>
   );
 }
-
-const resources = [
-  {
-    href: "https://remix.run/start/quickstart",
-    text: "Quick Start (5 min)",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M8.51851 12.0741L7.92592 18L15.6296 9.7037L11.4815 7.33333L12.0741 2L4.37036 10.2963L8.51851 12.0741Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "https://remix.run/start/tutorial",
-    text: "Tutorial (30 min)",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M4.561 12.749L3.15503 14.1549M3.00811 8.99944H1.01978M3.15503 3.84489L4.561 5.2508M8.3107 1.70923L8.3107 3.69749M13.4655 3.84489L12.0595 5.2508M18.1868 17.0974L16.635 18.6491C16.4636 18.8205 16.1858 18.8205 16.0144 18.6491L13.568 16.2028C13.383 16.0178 13.0784 16.0347 12.915 16.239L11.2697 18.2956C11.047 18.5739 10.6029 18.4847 10.505 18.142L7.85215 8.85711C7.75756 8.52603 8.06365 8.21994 8.39472 8.31453L17.6796 10.9673C18.0223 11.0653 18.1115 11.5094 17.8332 11.7321L15.7766 13.3773C15.5723 13.5408 15.5554 13.8454 15.7404 14.0304L18.1868 16.4767C18.3582 16.6481 18.3582 16.926 18.1868 17.0974Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "https://remix.run/docs",
-    text: "Remix Docs",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M9.99981 10.0751V9.99992M17.4688 17.4688C15.889 19.0485 11.2645 16.9853 7.13958 12.8604C3.01467 8.73546 0.951405 4.11091 2.53116 2.53116C4.11091 0.951405 8.73546 3.01467 12.8604 7.13958C16.9853 11.2645 19.0485 15.889 17.4688 17.4688ZM2.53132 17.4688C0.951566 15.8891 3.01483 11.2645 7.13974 7.13963C11.2647 3.01471 15.8892 0.951453 17.469 2.53121C19.0487 4.11096 16.9854 8.73551 12.8605 12.8604C8.73562 16.9853 4.11107 19.0486 2.53132 17.4688Z"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    href: "https://rmx.as/discord",
-    text: "Join Discord",
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="20"
-        viewBox="0 0 24 20"
-        fill="none"
-        className="stroke-gray-600 group-hover:stroke-current dark:stroke-gray-300"
-      >
-        <path
-          d="M15.0686 1.25995L14.5477 1.17423L14.2913 1.63578C14.1754 1.84439 14.0545 2.08275 13.9422 2.31963C12.6461 2.16488 11.3406 2.16505 10.0445 2.32014C9.92822 2.08178 9.80478 1.84975 9.67412 1.62413L9.41449 1.17584L8.90333 1.25995C7.33547 1.51794 5.80717 1.99419 4.37748 2.66939L4.19 2.75793L4.07461 2.93019C1.23864 7.16437 0.46302 11.3053 0.838165 15.3924L0.868838 15.7266L1.13844 15.9264C2.81818 17.1714 4.68053 18.1233 6.68582 18.719L7.18892 18.8684L7.50166 18.4469C7.96179 17.8268 8.36504 17.1824 8.709 16.4944L8.71099 16.4904C10.8645 17.0471 13.128 17.0485 15.2821 16.4947C15.6261 17.1826 16.0293 17.8269 16.4892 18.4469L16.805 18.8725L17.3116 18.717C19.3056 18.105 21.1876 17.1751 22.8559 15.9238L23.1224 15.724L23.1528 15.3923C23.5873 10.6524 22.3579 6.53306 19.8947 2.90714L19.7759 2.73227L19.5833 2.64518C18.1437 1.99439 16.6386 1.51826 15.0686 1.25995ZM16.6074 10.7755L16.6074 10.7756C16.5934 11.6409 16.0212 12.1444 15.4783 12.1444C14.9297 12.1444 14.3493 11.6173 14.3493 10.7877C14.3493 9.94885 14.9378 9.41192 15.4783 9.41192C16.0471 9.41192 16.6209 9.93851 16.6074 10.7755ZM8.49373 12.1444C7.94513 12.1444 7.36471 11.6173 7.36471 10.7877C7.36471 9.94885 7.95323 9.41192 8.49373 9.41192C9.06038 9.41192 9.63892 9.93712 9.6417 10.7815C9.62517 11.6239 9.05462 12.1444 8.49373 12.1444Z"
-          strokeWidth="1.5"
-        />
-      </svg>
-    ),
-  },
-];
