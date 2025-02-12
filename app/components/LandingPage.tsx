@@ -1,61 +1,476 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 }
+};
+
+const staggerChildren = {
+  animate: {
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const scaleIn = {
+  initial: { scale: 0.9, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  transition: { duration: 0.5 }
+};
 
 const LandingPage: React.FC = () => {
   return (
     <div className="relative min-h-screen">
-      {/* Hero Section with Stadium Background */}
       <div 
-        className="relative h-screen bg-cover bg-center"
+        className="relative min-h-screen bg-cover bg-center bg-no-repeat bg-gradient-to-br from-black/50 to-black/70"
         style={{ 
-          backgroundImage: 'url("/images/Cricket-Stadium-Wallpaper-for-Wall.jpg")',
-          backgroundBlendMode: 'overlay',
+          backgroundImage: 'url(/images/Cricket-Stadium-Wallpaper-for-Wall.jpg)',
+          backgroundAttachment: 'fixed'
         }}
       >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/80 to-blue-900/80"></div>
-        
         {/* Navigation */}
-        <nav className="relative z-10 p-6">
-          <div className="flex items-center">
-            <div className="text-3xl font-bold text-white">AUCTO</div>
-            <div className="flex-grow"></div>
-            <button className="lg:hidden">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-16 6h16"/>
-              </svg>
-            </button>
+        <nav className="relative z-20 py-6 px-4 lg:px-8 backdrop-blur-sm bg-black/10">
+          <div className="container mx-auto">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <img src="/images/logo.png" alt="Aucto Logo" className="w-10 h-10" />
+                <span className="text-3xl font-extrabold text-white tracking-tight">AUCTO</span>
+              </div>
+              <div className="hidden md:flex items-center space-x-8">
+                <a href="#features" className="text-white hover:text-yellow-400 transition-colors duration-200 font-medium">Features</a>
+                <a href="#why-us" className="text-white hover:text-yellow-400 transition-colors duration-200 font-medium">Why Us</a>
+                <a href="#testimonials" className="text-white hover:text-yellow-400 transition-colors duration-200 font-medium">Testimonials</a>
+                <button className="bg-yellow-400 text-black px-6 py-2 rounded-full font-semibold hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">
+                  Sign Up
+                </button>
+              </div>
+              <button className="md:hidden text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-16 6h16"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </nav>
 
-        {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-[calc(100vh-80px)] px-4">
-          <div className="text-center">
-            <h1 className="mb-8">
-              <span className="block text-5xl md:text-7xl font-bold text-yellow-400 mb-2">
-                YOUR GAME,
-              </span>
-              <span className="block text-5xl md:text-7xl font-bold text-white">
-                YOUR RULES.
-              </span>
-            </h1>
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
-              DOWNLOAD NOW!
-            </button>
+        {/* Hero Section */}
+        <div className="relative min-h-[90vh] md:min-h-screen flex items-center">
+          <div className="container mx-auto px-4 py-12 md:py-0">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                {/* Left Column */}
+                <div className="text-center lg:text-left">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                    <span className="text-[#4285F4]">CREATE YOUR</span><br />
+                    <span className="text-[#FFA500]">DREAM TEAM</span>
+                  </h1>
+                  <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                    Experience the thrill of live IPL auctions. Build your dream team and compete with friends!
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <button className="w-full sm:w-auto bg-[#4285F4] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3b7de2] transition-colors inline-flex items-center justify-center gap-2">
+                      Get Started
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </button>
+                    <button className="w-full sm:w-auto bg-white text-[#4285F4] px-8 py-4 rounded-full text-lg font-semibold border-2 border-[#4285F4] hover:bg-[#4285F4] hover:text-white transition-colors inline-flex items-center justify-center gap-2">
+                      Watch Demo
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <div className="flex -space-x-2">
+                      {[1, 2, 3, 4].map((num) => (
+                        <img
+                          key={num}
+                          src={`/images/avatar-${num}.jpg`}
+                          alt={`User ${num}`}
+                          className="w-10 h-10 rounded-full border-2 border-white"
+                        />
+                      ))}
+                    </div>
+                    <div className="text-center sm:text-left">
+                      <div className="text-[#FFA500] font-bold">4.8★</div>
+                      <div className="text-gray-600">from 3,000+ users</div>
+                    </div>
+                  </div>
+                </div>
+                {/* Right Column - Hero Image */}
+                <div className="relative order-first lg:order-last">
+                  <img
+                    src="/images/hero-image.png"
+                    alt="AuctoGames Platform Preview"
+                    className="w-full max-w-lg mx-auto"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Wave */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg 
-            viewBox="0 0 1440 200" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="fill-blue-600"
-          >
-            <path 
-              d="M0,128L48,117.3C96,107,192,85,288,90.7C384,96,480,128,576,133.3C672,139,768,117,864,101.3C960,85,1056,75,1152,80C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            />
-          </svg>
-        </div>
+        {/* Features Section with Stats */}
+        <motion.div 
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+          className="relative bg-white py-12 md:py-16"
+        >
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <motion.h2 variants={fadeInUp} className="text-center font-bold mb-8 md:mb-12">
+                <span className="block text-3xl sm:text-4xl md:text-5xl text-[#4285F4] mb-2">Get in the game.</span>
+                <span className="block text-3xl sm:text-4xl md:text-5xl text-[#FFA500]">Bid. Play. Dominate.</span>
+              </motion.h2>
+
+              <motion.div variants={fadeInUp} className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 md:p-10 mb-8 md:mb-16">
+                <p className="text-[#4285F4] text-lg sm:text-xl md:text-2xl text-center mb-4 font-medium">
+                  AuctoGames brings real IPL auctions to fantasy cricket. Bid live, build your team, and compete with friends or rivals.
+                </p>
+                <p className="text-[#FFA500] text-base sm:text-lg md:text-xl text-center font-medium">
+                  With 300+ events, 3,000+ gamers, and ₹5L+ revenue, we're making fantasy gaming more exciting than ever.
+                </p>
+              </motion.div>
+
+              <motion.div variants={staggerChildren} className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16">
+                {/* Feature Cards */}
+                {[
+                  {
+                    title: "Real-time Auctions",
+                    description: "Experience the thrill of live IPL-style auctions. Bid against friends and rivals in real-time for your favorite players.",
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    )
+                  },
+                  {
+                    title: "Strategic Team Building",
+                    description: "Build your dream team with a perfect balance of batsmen, bowlers, and all-rounders. Analyze player stats and make informed decisions.",
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    )
+                  },
+                  {
+                    title: "Compete & Win",
+                    description: "Join tournaments, compete with friends, and climb the leaderboards. Show off your cricket knowledge and team management skills.",
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    )
+                  }
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="bg-white rounded-[1.5rem] p-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_4px_28px_rgba(0,0,0,0.12)]"
+                  >
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-16 h-16 bg-[#4285F4] rounded-2xl flex items-center justify-center mb-6">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          {feature.icon}
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-bold text-[#4285F4] mb-3">{feature.title}</h3>
+                      <p className="text-gray-600">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div variants={staggerChildren} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {/* Stats Section */}
+                {[
+                  {
+                    value: "300+",
+                    label: "Events Hosted",
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    )
+                  },
+                  {
+                    value: "3,000+",
+                    label: "Active Gamers",
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    )
+                  },
+                  {
+                    value: "₹5L+",
+                    label: "Prize Pool",
+                    icon: (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    )
+                  },
+                  {
+                    value: "4.8★",
+                    label: "User Rating",
+                    icon: (
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    )
+                  }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="bg-white text-center p-6 rounded-[1.25rem] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_4px_28px_rgba(0,0,0,0.12)]"
+                  >
+                    <div className="flex justify-center mb-4">
+                      <svg className="w-6 h-6 text-[#FFA500]" fill={stat.value === "4.8★" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                        {stat.icon}
+                      </svg>
+                    </div>
+                    <div className="text-3xl font-bold text-[#4285F4] mb-2">{stat.value}</div>
+                    <div className="text-gray-600 font-medium">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* App Showcase Section */}
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+          className="relative bg-white py-12 md:py-20"
+        >
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <motion.h2 variants={fadeInUp} className="text-center mb-8 md:mb-16">
+                <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-[#4285F4] mb-2">What's</span>
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FFA500]">so Unique ?!</span>
+              </motion.h2>
+
+              <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
+                {/* App Screenshots Grid */}
+                <motion.div variants={staggerChildren} className="grid grid-cols-2 gap-4 md:gap-6">
+                  {[1, 2, 3, 4].map((num) => (
+                    <motion.div
+                      key={num}
+                      variants={scaleIn}
+                      className="relative"
+                    >
+                      <div className="rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-transform duration-300 hover:scale-105">
+                        <img 
+                          src={`/images/App-snippet-${num}.jpg`}
+                          alt={`AuctoGames Interface ${num}`}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                {/* Features List */}
+                <motion.div variants={staggerChildren} className="space-y-6 md:space-y-8">
+                  {[
+                    {
+                      title: "Live Auctioning:",
+                      description: "Feel the adrenaline of competing in real-time auctions.",
+                      color: "#4285F4"
+                    },
+                    {
+                      title: "Private Leagues:",
+                      description: "Play with your friends in custom leagues.",
+                      color: "#FFA500"
+                    },
+                    {
+                      title: "Real-Time Updates:",
+                      description: "Stay on top of your player's performance with live updates.",
+                      color: "#4285F4"
+                    },
+                    {
+                      title: "Seamless User Experience:",
+                      description: "Intuitive gameplay across all platforms with live chat for more fun!",
+                      color: "#FFA500"
+                    }
+                  ].map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      variants={fadeInUp}
+                      className="flex flex-col space-y-2"
+                    >
+                      <h3 className="text-2xl font-bold" style={{ color: feature.color }}>
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 text-lg">
+                        {feature.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Mobile App Preview */}
+              <div className="mt-20 text-center">
+                <div className="inline-flex items-center space-x-6">
+                  <button className="bg-[#4285F4] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3b7de2] transition-colors inline-flex items-center gap-2">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Download Now
+                  </button>
+                  <button className="border-2 border-[#4285F4] text-[#4285F4] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#4285F4] hover:text-white transition-colors inline-flex items-center gap-2">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Watch Demo
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Why AuctoGames Section */}
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+          className="relative bg-[#f8f9ff] py-12 md:py-20"
+        >
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <motion.h2 variants={fadeInUp} className="text-center mb-8 md:mb-16">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                  <span className="text-[#4285F4]">Why </span>
+                  <span className="text-[#FFA500]">AuctoGames</span>
+                  <span className="text-[#4285F4]"> ?</span>
+                </span>
+              </motion.h2>
+
+              <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                {/* Features Grid */}
+                <motion.div variants={staggerChildren} className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                  {/* Feature Cards */}
+                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#4285F4]">
+                    <h3 className="font-bold text-xl mb-3 text-[#4285F4]">A Booming Market</h3>
+                    <p className="text-gray-600">18Cr Indians play fantasy esports, more than the 16Cr in stocks!</p>
+                  </motion.div>
+
+                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#FFA500]">
+                    <h3 className="font-bold text-xl mb-3 text-[#FFA500]">Next-Level Fantasy Sports</h3>
+                    <p className="text-gray-600">Bid, build, and dominate in real-time.</p>
+                  </motion.div>
+
+                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#FFA500]">
+                    <h3 className="font-bold text-xl mb-3 text-[#FFA500]">Live IPL Auctions</h3>
+                    <p className="text-gray-600">Experience the thrill of live IPL auctions</p>
+                  </motion.div>
+
+                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#4285F4]">
+                    <h3 className="font-bold text-xl mb-3 text-[#4285F4]">Proven & Trusted</h3>
+                    <p className="text-gray-600">and we're just getting started!</p>
+                  </motion.div>
+                </motion.div>
+
+                {/* Testimonials */}
+                <motion.div variants={staggerChildren} className="space-y-6">
+                  {/* Testimonial 1 */}
+                  <motion.div variants={fadeInUp} className="bg-white rounded-[2rem] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                        <img src="/images/testimonial-1.jpg" alt="Gitansh G." className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-gray-800 text-lg mb-2">
+                          "AuctoGames takes fantasy cricket to the next level! The live auctions are thrilling!"
+                        </p>
+                        <p className="text-[#4285F4] font-semibold">– Gitansh G.</p>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Testimonial 2 */}
+                  <motion.div variants={fadeInUp} className="bg-white rounded-[2rem] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                        <img src="/images/testimonial-2.jpg" alt="Ravi P." className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-gray-800 text-lg mb-2">
+                          "AuctoGames is a game-changer! The live auctions bring a whole new level of excitement. I'm hooked!"
+                        </p>
+                        <p className="text-[#4285F4] font-semibold">– Ravi P.</p>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Mobile App Preview */}
+                  <div className="lg:mt-6">
+                    <img 
+                      src="/images/mobile-preview.jpg" 
+                      alt="AuctoGames Mobile App" 
+                      className="w-48 h-auto transform -rotate-12 shadow-xl rounded-3xl"
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Video Section */}
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={staggerChildren}
+          className="relative bg-white py-12 md:py-20"
+        >
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto text-center">
+              <motion.h2 variants={fadeInUp} className="mb-6">
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                  <span className="text-[#4285F4]">Ready to Test Your </span>
+                  <span className="text-[#FFA500]">Cricket Skills</span>
+                  <span className="text-[#4285F4]"> ?</span>
+                </span>
+              </motion.h2>
+              
+              <motion.p variants={fadeInUp} className="text-gray-600 text-base sm:text-lg mb-8 md:mb-12 max-w-3xl mx-auto">
+                Watch this video to learn how to play on AuctoGames, bid in live IPL auctions, build your dream team, 
+                and compete to win big!
+              </motion.p>
+
+              <motion.div 
+                variants={scaleIn}
+                className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.12)]"
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/VIDEO_ID"
+                  title="How to Play on AuctoGames"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0"
+                ></iframe>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} className="mt-8 md:mt-12">
+                <button className="w-full sm:w-auto bg-[#4285F4] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-[#3b7de2] transition-colors inline-flex items-center justify-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  Start Playing Now
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
