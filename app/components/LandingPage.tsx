@@ -115,31 +115,57 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Features Section with Stats */}
+        {/* Get in the Game Section */}
         <motion.div 
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerChildren}
-          className="relative bg-white py-12 md:py-16"
+          className="relative bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 py-16 md:py-24"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <motion.h2 variants={fadeInUp} className="text-center font-bold mb-8 md:mb-12">
-                <span className="block text-3xl sm:text-4xl md:text-5xl text-[#4285F4] mb-2">Get in the game.</span>
-                <span className="block text-3xl sm:text-4xl md:text-5xl text-[#FFA500]">Bid. Play. Dominate.</span>
-              </motion.h2>
-
-              <motion.div variants={fadeInUp} className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.08)] p-6 md:p-10 mb-8 md:mb-16">
-                <p className="text-[#4285F4] text-lg sm:text-xl md:text-2xl text-center mb-4 font-medium">
-                  AuctoGames brings real IPL auctions to fantasy cricket. Bid live, build your team, and compete with friends or rivals.
-                </p>
-                <p className="text-[#FFA500] text-base sm:text-lg md:text-xl text-center font-medium">
-                  With 300+ events, 3,000+ gamers, and ₹5L+ revenue, we're making fantasy gaming more exciting than ever.
-                </p>
+              <motion.div variants={fadeInUp} className="text-center space-y-4 mb-12 md:mb-16">
+                <h2 className="relative inline-block">
+                  <span className="block text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-3">
+                    Get in the game
+                  </span>
+                  <span className="block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                    Bid. Play. Dominate.
+                  </span>
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+                </h2>
               </motion.div>
 
-              <motion.div variants={staggerChildren} className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16">
+              <motion.div 
+                variants={fadeInUp} 
+                className="bg-white/90 backdrop-blur-sm rounded-[2rem] shadow-[0_8px_32px_rgba(79,70,229,0.15)] p-8 md:p-12 mb-12 md:mb-20 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(79,70,229,0.2)] border border-indigo-100"
+              >
+                <div className="max-w-3xl mx-auto space-y-6">
+                  <p className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent text-xl sm:text-2xl md:text-3xl text-center font-semibold leading-relaxed">
+                    AuctoGames brings real IPL auctions to fantasy cricket
+                  </p>
+                  <p className="text-slate-600 text-lg sm:text-xl text-center leading-relaxed">
+                    Bid live, build your dream team, and compete with friends or rivals in an immersive gaming experience
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-8 pt-6">
+                    <div className="flex items-center space-x-2 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-3 rounded-xl border border-orange-100">
+                      <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">300+</span>
+                      <span className="text-slate-600">Events</span>
+                    </div>
+                    <div className="flex items-center space-x-2 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-3 rounded-xl border border-orange-100">
+                      <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">3,000+</span>
+                      <span className="text-slate-600">Gamers</span>
+                    </div>
+                    <div className="flex items-center space-x-2 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-3 rounded-xl border border-orange-100">
+                      <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">₹5L+</span>
+                      <span className="text-slate-600">Revenue</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div variants={staggerChildren} className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
                 {/* Feature Cards */}
                 {[
                   {
@@ -181,54 +207,6 @@ const LandingPage: React.FC = () => {
                   </motion.div>
                 ))}
               </motion.div>
-
-              <motion.div variants={staggerChildren} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                {/* Stats Section */}
-                {[
-                  {
-                    value: "300+",
-                    label: "Events Hosted",
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    )
-                  },
-                  {
-                    value: "3,000+",
-                    label: "Active Gamers",
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    )
-                  },
-                  {
-                    value: "₹5L+",
-                    label: "Prize Pool",
-                    icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    )
-                  },
-                  {
-                    value: "4.8★",
-                    label: "User Rating",
-                    icon: (
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    )
-                  }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="bg-white text-center p-6 rounded-[1.25rem] shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_4px_28px_rgba(0,0,0,0.12)]"
-                  >
-                    <div className="flex justify-center mb-4">
-                      <svg className="w-6 h-6 text-[#FFA500]" fill={stat.value === "4.8★" ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-                        {stat.icon}
-                      </svg>
-                    </div>
-                    <div className="text-3xl font-bold text-[#4285F4] mb-2">{stat.value}</div>
-                    <div className="text-gray-600 font-medium">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
             </div>
           </div>
         </motion.div>
@@ -244,8 +222,12 @@ const LandingPage: React.FC = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <motion.h2 variants={fadeInUp} className="text-center mb-8 md:mb-16">
-                <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-[#4285F4] mb-2">What's</span>
-                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FFA500]">so Unique ?!</span>
+                <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-[#4285F4] mb-2">
+                  What's
+                </span>
+                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FFA500]">
+                  so Unique ?!
+                </span>
               </motion.h2>
 
               <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
