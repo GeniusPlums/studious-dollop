@@ -32,12 +32,12 @@ const LandingPage: React.FC = () => {
         }}
       >
         {/* Navigation */}
-        <nav className="relative z-20 py-6 px-4 lg:px-8 backdrop-blur-sm bg-black/10">
+        <nav className="relative z-20 py-4 sm:py-6 px-4 lg:px-8 backdrop-blur-sm bg-black/10">
           <div className="container mx-auto">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <img src="/images/logo.png" alt="Aucto Logo" className="w-10 h-10" />
-                <span className="text-3xl font-extrabold text-white tracking-tight">AUCTO</span>
+                <img src="/images/logo.png" alt="Aucto Logo" className="w-8 h-8 sm:w-10 sm:h-10" />
+                <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">AUCTO</span>
               </div>
               <div className="hidden md:flex items-center space-x-8">
                 <a href="#features" className="text-white hover:text-yellow-400 transition-colors duration-200 font-medium">Features</a>
@@ -47,7 +47,7 @@ const LandingPage: React.FC = () => {
                   Sign Up
                 </button>
               </div>
-              <button className="md:hidden text-white">
+              <button className="md:hidden text-white p-2">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-16 6h16"/>
                 </svg>
@@ -57,57 +57,57 @@ const LandingPage: React.FC = () => {
         </nav>
 
         {/* Hero Section */}
-        <div className="relative min-h-[90vh] md:min-h-screen flex items-center">
-          <div className="container mx-auto px-4 py-12 md:py-0">
+        <div className="relative min-h-[80vh] sm:min-h-[90vh] md:min-h-screen flex items-center">
+          <div className="container mx-auto px-4 py-8 sm:py-12 md:py-0">
             <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
                 {/* Left Column */}
                 <div className="text-center lg:text-left">
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
                     <span className="text-[#4285F4]">CREATE YOUR</span><br />
                     <span className="text-[#FFA500]">DREAM TEAM</span>
                   </h1>
-                  <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0">
                     Experience the thrill of live IPL auctions. Build your dream team and compete with friends!
                   </p>
-                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                    <button className="w-full sm:w-auto bg-[#4285F4] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3b7de2] transition-colors inline-flex items-center justify-center gap-2">
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
+                    <button className="w-full sm:w-auto bg-[#4285F4] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-[#3b7de2] transition-colors inline-flex items-center justify-center gap-2">
                       Get Started
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </button>
-                    <button className="w-full sm:w-auto bg-white text-[#4285F4] px-8 py-4 rounded-full text-lg font-semibold border-2 border-[#4285F4] hover:bg-[#4285F4] hover:text-white transition-colors inline-flex items-center justify-center gap-2">
+                    <button className="w-full sm:w-auto bg-white text-[#4285F4] px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold border-2 border-[#4285F4] hover:bg-[#4285F4] hover:text-white transition-colors inline-flex items-center justify-center gap-2">
                       Watch Demo
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
                     </button>
                   </div>
-                  <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                  <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
                     <div className="flex -space-x-2">
                       {[1, 2, 3, 4].map((num) => (
                         <img
                           key={num}
                           src={`/images/avatar-${num}.jpg`}
                           alt={`User ${num}`}
-                          className="w-10 h-10 rounded-full border-2 border-white"
+                          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white"
                         />
                       ))}
                     </div>
                     <div className="text-center sm:text-left">
-                      <div className="text-[#FFA500] font-bold">4.8★</div>
-                      <div className="text-gray-600">from 3,000+ users</div>
+                      <div className="text-[#FFA500] font-bold text-sm sm:text-base">4.8★</div>
+                      <div className="text-gray-300 text-sm sm:text-base">from 3,000+ users</div>
                     </div>
                   </div>
                 </div>
                 {/* Right Column - Hero Image */}
-                <div className="relative order-first lg:order-last">
+                <div className="relative order-first lg:order-last px-4 sm:px-0">
                   <img
                     src="/images/hero-image.png"
                     alt="AuctoGames Platform Preview"
-                    className="w-full max-w-lg mx-auto"
+                    className="w-full max-w-md mx-auto"
                   />
                 </div>
               </div>
@@ -179,7 +179,7 @@ const LandingPage: React.FC = () => {
                     title: "Strategic Team Building",
                     description: "Build your dream team with a perfect balance of batsmen, bowlers, and all-rounders. Analyze player stats and make informed decisions.",
                     icon: (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2m0 0V9a2 2 0 012-2h2a2 2 0 012 2v10a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     )
                   },
                   {
@@ -217,29 +217,29 @@ const LandingPage: React.FC = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerChildren}
-          className="relative bg-white py-12 md:py-20"
+          className="relative bg-white py-8 sm:py-12 md:py-20"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <motion.h2 variants={fadeInUp} className="text-center mb-8 md:mb-16">
-                <span className="block text-3xl sm:text-4xl md:text-5xl font-bold text-[#4285F4] mb-2">
+              <motion.h2 variants={fadeInUp} className="text-center mb-6 sm:mb-8 md:mb-16">
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#4285F4] mb-2">
                   What's
                 </span>
-                <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FFA500]">
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#FFA500]">
                   so Unique ?!
                 </span>
               </motion.h2>
 
-              <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
                 {/* App Screenshots Grid */}
-                <motion.div variants={staggerChildren} className="grid grid-cols-2 gap-4 md:gap-6">
+                <motion.div variants={staggerChildren} className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                   {[1, 2, 3, 4].map((num) => (
                     <motion.div
                       key={num}
                       variants={scaleIn}
                       className="relative"
                     >
-                      <div className="rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-transform duration-300 hover:scale-105">
+                      <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-transform duration-300 hover:scale-105">
                         <img 
                           src={`/images/App-snippet-${num}.jpg`}
                           alt={`AuctoGames Interface ${num}`}
@@ -251,7 +251,7 @@ const LandingPage: React.FC = () => {
                 </motion.div>
 
                 {/* Features List */}
-                <motion.div variants={staggerChildren} className="space-y-6 md:space-y-8">
+                <motion.div variants={staggerChildren} className="space-y-4 sm:space-y-6 md:space-y-8">
                   {[
                     {
                       title: "Live Auctioning:",
@@ -277,12 +277,12 @@ const LandingPage: React.FC = () => {
                     <motion.div
                       key={index}
                       variants={fadeInUp}
-                      className="flex flex-col space-y-2"
+                      className="flex flex-col space-y-1 sm:space-y-2"
                     >
-                      <h3 className="text-2xl font-bold" style={{ color: feature.color }}>
+                      <h3 className="text-xl sm:text-2xl font-bold" style={{ color: feature.color }}>
                         {feature.title}
                       </h3>
-                      <p className="text-gray-600 text-lg">
+                      <p className="text-gray-600 text-base sm:text-lg">
                         {feature.description}
                       </p>
                     </motion.div>
@@ -291,17 +291,17 @@ const LandingPage: React.FC = () => {
               </div>
 
               {/* Mobile App Preview */}
-              <div className="mt-20 text-center">
-                <div className="inline-flex items-center space-x-6">
-                  <button className="bg-[#4285F4] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#3b7de2] transition-colors inline-flex items-center gap-2">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mt-12 sm:mt-16 md:mt-20 text-center">
+                <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-6">
+                  <button className="w-full sm:w-auto bg-[#4285F4] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-[#3b7de2] transition-colors inline-flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     Download Now
                   </button>
-                  <button className="border-2 border-[#4285F4] text-[#4285F4] px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#4285F4] hover:text-white transition-colors inline-flex items-center gap-2">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button className="w-full sm:w-auto border-2 border-[#4285F4] text-[#4285F4] px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-[#4285F4] hover:text-white transition-colors inline-flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
@@ -319,83 +319,74 @@ const LandingPage: React.FC = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerChildren}
-          className="relative bg-[#f8f9ff] py-12 md:py-20"
+          className="relative bg-[#f8f9ff] py-8 sm:py-12 md:py-20"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <motion.h2 variants={fadeInUp} className="text-center mb-8 md:mb-16">
-                <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
+              <motion.h2 variants={fadeInUp} className="text-center mb-6 sm:mb-8 md:mb-16">
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
                   <span className="text-[#4285F4]">Why </span>
                   <span className="text-[#FFA500]">AuctoGames</span>
                   <span className="text-[#4285F4]"> ?</span>
                 </span>
               </motion.h2>
 
-              <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start">
                 {/* Features Grid */}
-                <motion.div variants={staggerChildren} className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                <motion.div variants={staggerChildren} className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                   {/* Feature Cards */}
-                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#4285F4]">
-                    <h3 className="font-bold text-xl mb-3 text-[#4285F4]">A Booming Market</h3>
-                    <p className="text-gray-600">18Cr Indians play fantasy esports, more than the 16Cr in stocks!</p>
+                  <motion.div variants={fadeInUp} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#4285F4]">
+                    <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-[#4285F4]">A Booming Market</h3>
+                    <p className="text-gray-600 text-sm sm:text-base">18Cr Indians play fantasy esports, more than the 16Cr in stocks!</p>
                   </motion.div>
 
-                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#FFA500]">
-                    <h3 className="font-bold text-xl mb-3 text-[#FFA500]">Next-Level Fantasy Sports</h3>
-                    <p className="text-gray-600">Bid, build, and dominate in real-time.</p>
+                  <motion.div variants={fadeInUp} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#FFA500]">
+                    <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-[#FFA500]">Next-Level Fantasy Sports</h3>
+                    <p className="text-gray-600 text-sm sm:text-base">Bid, build, and dominate in real-time.</p>
                   </motion.div>
 
-                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#FFA500]">
-                    <h3 className="font-bold text-xl mb-3 text-[#FFA500]">Live IPL Auctions</h3>
-                    <p className="text-gray-600">Experience the thrill of live IPL auctions</p>
+                  <motion.div variants={fadeInUp} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#FFA500]">
+                    <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-[#FFA500]">Live IPL Auctions</h3>
+                    <p className="text-gray-600 text-sm sm:text-base">Experience the thrill of live IPL auctions</p>
                   </motion.div>
 
-                  <motion.div variants={fadeInUp} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#4285F4]">
-                    <h3 className="font-bold text-xl mb-3 text-[#4285F4]">Proven & Trusted</h3>
-                    <p className="text-gray-600">and we're just getting started!</p>
+                  <motion.div variants={fadeInUp} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-l-4 border-[#4285F4]">
+                    <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-[#4285F4]">Proven & Trusted</h3>
+                    <p className="text-gray-600 text-sm sm:text-base">and we're just getting started!</p>
                   </motion.div>
                 </motion.div>
 
                 {/* Testimonials */}
-                <motion.div variants={staggerChildren} className="space-y-6">
+                <motion.div variants={staggerChildren} className="space-y-4 sm:space-y-6">
                   {/* Testimonial 1 */}
-                  <motion.div variants={fadeInUp} className="bg-white rounded-[2rem] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                  <motion.div variants={fadeInUp} className="bg-white rounded-xl sm:rounded-[2rem] p-4 sm:p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0">
                         <img src="/images/testimonial-1.jpg" alt="Gitansh G." className="w-full h-full object-cover" />
                       </div>
                       <div>
-                        <p className="text-gray-800 text-lg mb-2">
+                        <p className="text-gray-800 text-base sm:text-lg mb-2">
                           "AuctoGames takes fantasy cricket to the next level! The live auctions are thrilling!"
                         </p>
-                        <p className="text-[#4285F4] font-semibold">– Gitansh G.</p>
+                        <p className="text-[#4285F4] font-semibold text-sm sm:text-base">– Gitansh G.</p>
                       </div>
                     </div>
                   </motion.div>
 
                   {/* Testimonial 2 */}
-                  <motion.div variants={fadeInUp} className="bg-white rounded-[2rem] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                  <motion.div variants={fadeInUp} className="bg-white rounded-xl sm:rounded-[2rem] p-4 sm:p-6 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0">
                         <img src="/images/testimonial-2.jpg" alt="Ravi P." className="w-full h-full object-cover" />
                       </div>
                       <div>
-                        <p className="text-gray-800 text-lg mb-2">
+                        <p className="text-gray-800 text-base sm:text-lg mb-2">
                           "AuctoGames is a game-changer! The live auctions bring a whole new level of excitement. I'm hooked!"
                         </p>
-                        <p className="text-[#4285F4] font-semibold">– Ravi P.</p>
+                        <p className="text-[#4285F4] font-semibold text-sm sm:text-base">– Ravi P.</p>
                       </div>
                     </div>
                   </motion.div>
-
-                  {/* Mobile App Preview */}
-                  <div className="lg:mt-6">
-                    <img 
-                      src="/images/mobile-preview.jpg" 
-                      alt="AuctoGames Mobile App" 
-                      className="w-48 h-auto transform -rotate-12 shadow-xl rounded-3xl"
-                    />
-                  </div>
                 </motion.div>
               </div>
             </div>
