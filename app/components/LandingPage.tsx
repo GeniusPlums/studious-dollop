@@ -101,15 +101,7 @@ const LandingPage: React.FC = () => {
                       <div className="text-gray-300 text-sm sm:text-base">from 3,000+ users</div>
                     </div>
                   </div>
-                </div>
-                {/* Right Column - Hero Image */}
-                <div className="relative order-first lg:order-last px-4 sm:px-0">
-                  <img
-                    src="/images/hero-image.png"
-                    alt="AuctoGames Platform Preview"
-                    className="w-full max-w-md mx-auto"
-                  />
-                </div>
+                </div>                
               </div>
             </div>
           </div>
@@ -242,7 +234,7 @@ const LandingPage: React.FC = () => {
                       <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.12)] transition-transform duration-300 hover:scale-105">
                         <img 
                           src={`/images/App-snippet-${num}.jpg`}
-                          alt={`AuctoGames Interface ${num}`}
+                          alt={`Aucto Platform`}
                           className="w-full h-auto"
                         />
                       </div>
