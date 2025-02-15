@@ -24,20 +24,16 @@ const scaleIn = {
 const LandingPage: React.FC = () => {
   return (
     <div className="relative min-h-screen">
-      <div 
-        className="relative min-h-screen bg-cover bg-center bg-no-repeat bg-gradient-to-br from-black/50 to-black/70 ios-background"
-        style={{ 
-          backgroundImage: 'url(/images/Cricket-Stadium-Wallpaper-for-Wall.jpg)',
-          WebkitBackgroundSize: 'cover',
-          MozBackgroundSize: 'cover',
-          OBackgroundSize: 'cover',
-          backgroundSize: 'cover',
-          WebkitTransform: 'translate3d(0,0,0)',
-          transform: 'translate3d(0,0,0)'
-        }}
-      >
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/Cricket-Stadium-Wallpaper-for-Wall.jpg"
+          alt="Background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="relative z-10 min-h-screen">
         {/* Navigation */}
-        <nav className="relative z-20 py-4 sm:py-6 px-4 lg:px-8 backdrop-blur-sm bg-black/10">
+        <nav className="relative z-20 py-4 sm:py-6 px-4 lg:px-8">
           <div className="container mx-auto">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -118,44 +114,44 @@ const LandingPage: React.FC = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerChildren}
-          className="relative bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-50 py-16 md:py-24"
+          className="relative py-16 md:py-24"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <motion.div variants={fadeInUp} className="text-center space-y-4 mb-12 md:mb-16">
                 <h2 className="relative inline-block">
-                  <span className="block text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-3">
+                  <span className="block text-4xl sm:text-5xl md:text-6xl font-extrabold mb-3">
                     Get in the game
                   </span>
-                  <span className="block text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
+                  <span className="block text-3xl sm:text-4xl md:text-5xl font-bold">
                     Bid. Play. Dominate.
                   </span>
-                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 rounded-full"></div>
                 </h2>
               </motion.div>
 
               <motion.div 
                 variants={fadeInUp} 
-                className="bg-white/90 backdrop-blur-sm rounded-[2rem] shadow-[0_8px_32px_rgba(79,70,229,0.15)] p-8 md:p-12 mb-12 md:mb-20 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(79,70,229,0.2)] border border-indigo-100"
+                className="bg-white rounded-[2rem] shadow-[0_8px_32px_rgba(79,70,229,0.15)] p-8 md:p-12 mb-12 md:mb-20 transform hover:scale-[1.02] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(79,70,229,0.2)] border border-indigo-100"
               >
                 <div className="max-w-3xl mx-auto space-y-6">
-                  <p className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent text-xl sm:text-2xl md:text-3xl text-center font-semibold leading-relaxed">
+                  <p className="text-xl sm:text-2xl md:text-3xl text-center font-semibold leading-relaxed">
                     AuctoGames brings real IPL auctions to fantasy cricket
                   </p>
                   <p className="text-slate-600 text-lg sm:text-xl text-center leading-relaxed">
                     Bid live, build your dream team, and compete with friends or rivals in an immersive gaming experience
                   </p>
                   <div className="flex flex-wrap justify-center gap-8 pt-6">
-                    <div className="flex items-center space-x-2 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-3 rounded-xl border border-orange-100">
-                      <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">300+</span>
+                    <div className="flex items-center space-x-2 bg-orange-50 px-6 py-3 rounded-xl border border-orange-100">
+                      <span className="text-2xl md:text-3xl font-bold">300+</span>
                       <span className="text-slate-600">Events</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-3 rounded-xl border border-orange-100">
-                      <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">3,000+</span>
+                    <div className="flex items-center space-x-2 bg-orange-50 px-6 py-3 rounded-xl border border-orange-100">
+                      <span className="text-2xl md:text-3xl font-bold">3,000+</span>
                       <span className="text-slate-600">Gamers</span>
                     </div>
-                    <div className="flex items-center space-x-2 bg-gradient-to-br from-amber-50 to-orange-50 px-6 py-3 rounded-xl border border-orange-100">
-                      <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">₹5L+</span>
+                    <div className="flex items-center space-x-2 bg-orange-50 px-6 py-3 rounded-xl border border-orange-100">
+                      <span className="text-2xl md:text-3xl font-bold">₹5L+</span>
                       <span className="text-slate-600">Revenue</span>
                     </div>
                   </div>
@@ -214,15 +210,15 @@ const LandingPage: React.FC = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerChildren}
-          className="relative bg-white py-8 sm:py-12 md:py-20"
+          className="relative py-8 sm:py-12 md:py-20"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <motion.h2 variants={fadeInUp} className="text-center mb-6 sm:mb-8 md:mb-16">
-                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#4285F4] mb-2">
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
                   What's
                 </span>
-                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#FFA500]">
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
                   so Unique ?!
                 </span>
               </motion.h2>
@@ -316,7 +312,7 @@ const LandingPage: React.FC = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerChildren}
-          className="relative bg-[#f8f9ff] py-8 sm:py-12 md:py-20"
+          className="relative py-8 sm:py-12 md:py-20"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
@@ -396,7 +392,7 @@ const LandingPage: React.FC = () => {
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerChildren}
-          className="relative bg-white py-12 md:py-20"
+          className="relative py-12 md:py-20"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto text-center">

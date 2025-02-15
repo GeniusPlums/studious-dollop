@@ -171,3 +171,13 @@
     will-change: transform;
   }
 }
+
+/* Image handling for maximum clarity */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  max-width: 100%;
+  height: auto;
+}
