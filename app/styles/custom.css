@@ -148,3 +148,26 @@
   -webkit-perspective: 1000;
   perspective: 1000;
 }
+
+/* iOS Background Fix */
+.ios-background {
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  background-attachment: scroll !important;
+}
+
+/* Ensure background images work on iOS */
+@supports (-webkit-touch-callout: none) {
+  .ios-background {
+    background-attachment: scroll !important;
+    will-change: transform;
+  }
+}

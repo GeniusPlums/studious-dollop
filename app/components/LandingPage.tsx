@@ -25,10 +25,15 @@ const LandingPage: React.FC = () => {
   return (
     <div className="relative min-h-screen">
       <div 
-        className="relative min-h-screen bg-cover bg-center bg-no-repeat bg-gradient-to-br from-black/50 to-black/70"
+        className="relative min-h-screen bg-cover bg-center bg-no-repeat bg-gradient-to-br from-black/50 to-black/70 ios-background"
         style={{ 
           backgroundImage: 'url(/images/Cricket-Stadium-Wallpaper-for-Wall.jpg)',
-          backgroundAttachment: 'fixed'
+          WebkitBackgroundSize: 'cover',
+          MozBackgroundSize: 'cover',
+          OBackgroundSize: 'cover',
+          backgroundSize: 'cover',
+          WebkitTransform: 'translate3d(0,0,0)',
+          transform: 'translate3d(0,0,0)'
         }}
       >
         {/* Navigation */}
